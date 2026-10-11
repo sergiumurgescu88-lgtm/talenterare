@@ -230,7 +230,7 @@ export default function App() {
           <div className="flex items-center gap-2">
             {[
               { id: 'COMMAND', label: 'Command Center', icon: Layers },
-              { id: 'BOTS', label: 'All 20 Bots', icon: LayoutGrid },
+              { id: 'BOTS', label: 'All 10 Bots', icon: LayoutGrid },
               { id: 'PERFORMANCE', label: 'Performance & Ledger', icon: BarChart3 },
               { id: 'RESEARCH', label: 'Deep Research Playbooks', icon: BookOpen },
               { id: 'LOGS', label: 'Live Logs', icon: Terminal },
@@ -359,7 +359,7 @@ export default function App() {
                 }`}
               >
                 <span className="font-serif font-extrabold text-yellow-400">φ</span>
-                <span>Doar SERGIU (4)</span>
+                <span>Doar SERGIU (2)</span>
               </button>
             </div>
           </div>
