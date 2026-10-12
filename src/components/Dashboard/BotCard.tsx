@@ -278,38 +278,32 @@ const BotCardComponent: React.FC<BotCardProps> = ({
               <span className="text-xs font-bold text-emerald-500 flex items-center gap-0.5">
                 <Target className="h-2.5 w-2.5" />
                 {fibData.distance}
-              {/* Strategie și Praguri de Intrare */}
-              <div className="mt-2 pt-2 border-t border-slate-800/60 space-y-1">
-                <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span>Strategie:</span>
-                  <span className="font-mono text-cyan-300 text-right">{bot.strategy || 'Whale &gt; 1.22x · ADX &gt; 19'}</span>
-                </div>
-                <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span>Prag ADX:</span>
-                  <span className="font-mono text-emerald-400">{'&gt; '}{bot.adx_threshold || 19}</span>
-                </div>
-                <div className="flex items-center justify-between text-xs text-slate-400">
-                  <span>Timeframes:</span>
-                  <span className="font-mono text-purple-400">M15 + M30 + H1</span>
-                </div>
-              </div>
               </span>
             </div>
 
             {/* Specificații exacte conform cerințelor 3, 4, 5, 6 */}
             <div className="mt-1.5 flex flex-col gap-1 text-xs">
-              <div className="flex items-center justify-between text-slate-300">
-                <span className="text-slate-400">H1 Alignment:</span>
-                <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Strategie:</span>
+                <span className="font-mono text-cyan-300 text-right">{bot.strategy || 'Whale > 1.22x · ADX > 19 · Scor > 60'}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Prag ADX:</span>
+                <span className="font-mono text-emerald-400">{'> ' + (bot.adx_threshold || 19)}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Prag Whale:</span>
+                <span className="font-mono text-emerald-400">{'> ' + (bot.whale_threshold || 1.22) + 'x'}</span>
+              </div>
+              <div className="flex items-center justify-between">
+                <span className="text-slate-400">Timeframes:</span>
+                <span className="font-mono text-purple-400">M15 + M30 + H1</span>
               </div>
             </div>
 
             {/* Mini Grafic cu ultimele 5 Swing Points (SW1 - SW5) */}
             <div className="mt-2 pt-1 border-t border-slate-800/60">
-              <div className="flex items-center justify-between text-xs text-slate-500 font-sans mb-1">
-                <span>Lot</span>
-                <span className="text-yellow-400/90 font-mono">{bot.lot}</span>
-              </div>
+
 
               <div className="relative h-9 w-full bg-slate-950/80 rounded border border-slate-800/60 overflow-hidden px-1">
                 <svg viewBox="0 0 164 36" className="w-full h-full overflow-visible">
@@ -398,7 +392,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
                     : 'text-slate-400'
                 }`}
               >
-                {bot.whaleIntensity}%
+                {bot.whale_current || bot.whale_threshold}x
               </span>
             </div>
 
