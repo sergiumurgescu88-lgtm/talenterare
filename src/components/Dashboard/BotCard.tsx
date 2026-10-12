@@ -49,11 +49,9 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   // 3. SERGIU-Majors (EURUSD)
   if (nameLower.includes('sergiu-majors') || (nameLower.includes('sergiu') && asset === 'EURUSD')) {
     return {
-      strategyLabel: bot.strategy || 'AMX Strategy Engine',
       confirmationDetail: 'AMX Whale Active',
       currentLevel: '{bot.lot}',
       nextLevel: '1.618 Extension',
-      distance: '+24 pips to 1.618',
       swingPoints: [22, 88, 44, 94, 61.8],
     };
   }
@@ -61,11 +59,9 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   // 4. SERGIU-Metals (XAUUSD)
   if (nameLower.includes('sergiu-metals') || (nameLower.includes('sergiu') && asset === 'XAUUSD')) {
     return {
-      strategyLabel: bot.strategy || 'AMX Strategy Engine',
       confirmationDetail: 'AMX Whale Active',
       currentLevel: '{bot.lot}',
       nextLevel: '2.618 Macro Ext.',
-      distance: '+42 pips to 1.618',
       swingPoints: [18, 92, 38, 96, 63.5],
     };
   }
@@ -97,10 +93,8 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   // Fallback pentru alți boți / Gamma bots
   return {
     strategyLabel: 'AMX Engine v4.2',
-    confirmationDetail: `Confirmare pe ${bot.technicalParameters.timeframe}`,
     currentLevel: '{bot.lot}',
     nextLevel: '1.272 / 1.618 Ext.',
-    distance: '+16 pips to target',
     swingPoints: [25, 78, 48, 85, 58],
   };
 }
@@ -264,7 +258,6 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             </div>
           </div>
 
-          {/* 2. SECȚIUNE FIBONACCI ANALYSIS (Nivel, Distanță, Mini Grafic Swing Points) */}
           <div className={`mt-3 rounded-xl border p-2.5 font-mono ${
             isGoldenBot
               ? 'border-yellow-500/40 bg-gradient-to-b from-yellow-500/10 via-slate-900/90 to-slate-950'
@@ -273,7 +266,6 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             <div className="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
               <div className="flex items-center gap-1 text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-yellow-400">
                 <Compass className="h-3 w-3 text-yellow-400" />
-                <span>AMX Strategy Engine</span>
               </div>
               <span className="text-xs font-bold text-emerald-500 flex items-center gap-0.5">
                 <Target className="h-2.5 w-2.5" />
@@ -286,7 +278,6 @@ const BotCardComponent: React.FC<BotCardProps> = ({
               <div className="flex items-center justify-between text-slate-300">
                 <span className="text-slate-400">H1 Alignment:</span>
                 <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
-                <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
               </div>
               <div className="flex items-center justify-between text-slate-300">
                 <span className="text-slate-400">ADX:</span>
@@ -295,12 +286,10 @@ const BotCardComponent: React.FC<BotCardProps> = ({
                 </span>
               </div>
               <div className="flex items-center justify-between text-xs text-cyan-300/90">
-                <span className="text-slate-500 font-sans">Trigger:</span>
                 <span className="font-mono text-cyan-300">{fibData.confirmationDetail}</span>
               </div>
             </div>
 
-            {/* Mini Grafic cu ultimele 5 Swing Points (SW1 - SW5) */}
             <div className="mt-2 pt-1 border-t border-slate-800/60">
               <div className="flex items-center justify-between text-xs text-slate-500 font-sans mb-1">
                 <span>Lot</span>
@@ -308,7 +297,6 @@ const BotCardComponent: React.FC<BotCardProps> = ({
               </div>
 
               <div className="relative h-9 w-full bg-slate-950/80 rounded border border-slate-800/60 overflow-hidden px-1">
-                <svg viewBox="0 0 164 36" className="w-full h-full overflow-visible">
                   {/* Linii orizontale de ghidaj Fibonacci (0.382, 0.618) */}
                   <line x1="0" y1="22" x2="164" y2="22" stroke="#334155" strokeDasharray="2 2" strokeWidth="0.8" />
                   <line x1="0" y1="13.9" x2="164" y2="13.9" stroke="#ca8a04" strokeDasharray="3 2" strokeWidth="0.9" opacity="0.6" />
@@ -350,14 +338,9 @@ const BotCardComponent: React.FC<BotCardProps> = ({
                       </g>
                     );
                   })}
-                </svg>
 
                 {/* Marcaje Swing Points */}
                 <div className="absolute bottom-0.5 inset-x-2 flex justify-between text-xs font-mono text-slate-500">
-                  <span>SW1</span>
-                  <span>SW2</span>
-                  <span>SW3</span>
-                  <span>SW4</span>
                   <span className="text-yellow-400 font-bold">SW5</span>
                 </div>
               </div>
