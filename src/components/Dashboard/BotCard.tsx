@@ -36,8 +36,8 @@ interface FibonacciInfo {
 
 /**
  * Calcul și extragere informații Fibonacci dedicate conform cerințelor:
- * 3. SERGIU-Majors (EURUSD): Classic Retracement: 0.618 | Confirmare pe M15
- * 4. SERGIU-Metals (XAUUSD): Deep Golden Zone: 0.618 - 0.65 | Confirmare pe M30
+ * 3. SERGIU-Majors (EURUSD): Classic Retracement: 0.618 | {bot.whale}x
+ * 4. SERGIU-Metals (XAUUSD): Deep Golden Zone: 0.618 - 0.65 | {bot.whale}x
  * 5. SERGIU-Crypto (GBPJPY / BTCUSD): Equilibrium Level: 0.500 | Stop Loss în afara 0.786
  * 6. SERGIU-Macro (EURJPY / OIL): Fibonacci + Psychological Level | Verifică suprapunere cu numere rotunde
  */
@@ -50,8 +50,8 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   if (nameLower.includes('sergiu-majors') || (nameLower.includes('sergiu') && asset === 'EURUSD')) {
     return {
       strategyLabel: 'Classic Retracement: 0.618',
-      confirmationDetail: 'Confirmare pe M15',
-      currentLevel: '0.618 (AMX Zone)',
+      confirmationDetail: '{bot.whale}x',
+      currentLevel: '{bot.lot}',
       nextLevel: '1.618 Extension',
       distance: '+24 pips to 1.618',
       swingPoints: [22, 88, 44, 94, 61.8],
@@ -62,8 +62,8 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   if (nameLower.includes('sergiu-metals') || (nameLower.includes('sergiu') && asset === 'XAUUSD')) {
     return {
       strategyLabel: 'Deep Golden Zone: 0.618 - 0.65',
-      confirmationDetail: 'Confirmare pe M30',
-      currentLevel: '0.618 - 0.65 (Deep Golden)',
+      confirmationDetail: '{bot.whale}x',
+      currentLevel: '{bot.lot}',
       nextLevel: '2.618 Macro Ext.',
       distance: '+42 pips to 1.618',
       swingPoints: [18, 92, 38, 96, 63.5],
@@ -76,7 +76,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
       strategyLabel: 'Equilibrium Level: 0.500',
       confirmationDetail: 'Stop Loss în afara 0.786',
       currentLevel: '0.500 (Equilibrium)',
-      nextLevel: '0.618 AMX Zone',
+      nextLevel: '{bot.lot}',
       distance: '-18 pips to 0.786 SL',
       swingPoints: [28, 82, 50, 86, 50.0],
     };
@@ -96,9 +96,9 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
 
   // Fallback pentru alți boți / Gamma bots
   return {
-    strategyLabel: 'AMX Strategy',
+    strategyLabel: 'AMX Engine v4.2',
     confirmationDetail: `Confirmare pe ${bot.technicalParameters.timeframe}`,
-    currentLevel: '0.500 / 0.618 Cluster',
+    currentLevel: '{bot.lot}',
     nextLevel: '1.272 / 1.618 Ext.',
     distance: '+16 pips to target',
     swingPoints: [25, 78, 48, 85, 58],
@@ -273,12 +273,27 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             <div className="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
               <div className="flex items-center gap-1 text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-yellow-400">
                 <Compass className="h-3 w-3 text-yellow-400" />
-                <span>{/* DATE REALE AMX */}
-              H1 Alignment:</span>
-                <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
-                <span className="font-bold text-yellow-300">{fibData.currentLevel}</span>
+                <span>AMX Strategy Engine</span>
               </div>
-              
+              <span className="text-xs font-bold text-emerald-500 flex items-center gap-0.5">
+                <Target className="h-2.5 w-2.5" />
+                {fibData.distance}
+              </span>
+            </div>
+
+            {/* Specificații exacte conform cerințelor 3, 4, 5, 6 */}
+            <div className="mt-1.5 flex flex-col gap-1 text-xs">
+              <div className="flex items-center justify-between text-slate-300">
+                <span className="text-slate-400">H1 Alignment:</span>
+                <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
+                <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
+              </div>
+              <div className="flex items-center justify-between text-slate-300">
+                <span className="text-slate-400">ADX:</span>
+                <span className="font-semibold text-slate-200 truncate max-w-[155px]" title={bot.adx}>
+                  {bot.adx}
+                </span>
+              </div>
               <div className="flex items-center justify-between text-xs text-cyan-300/90">
                 <span className="text-slate-500 font-sans">Trigger:</span>
                 <span className="font-mono text-cyan-300">{fibData.confirmationDetail}</span>
@@ -288,8 +303,8 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             {/* Mini Grafic cu ultimele 5 Swing Points (SW1 - SW5) */}
             <div className="mt-2 pt-1 border-t border-slate-800/60">
               <div className="flex items-center justify-between text-xs text-slate-500 font-sans mb-1">
-                <span>AMX Momentum</span>
-                <span className="text-yellow-400/90 font-mono">0.618 AMX Zone</span>
+                <span>Lot</span>
+                <span className="text-yellow-400/90 font-mono">{bot.lot}</span>
               </div>
 
               <div className="relative h-9 w-full bg-slate-950/80 rounded border border-slate-800/60 overflow-hidden px-1">
@@ -395,8 +410,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
           {/* H1 Alignment & Live P/L bar */}
           <div className="mt-3 flex items-center justify-between border-t border-slate-800/60 pt-2.5">
             <div className="flex items-center gap-1.5">
-              <span className="text-xs font-medium text-slate-400">{/* DATE REALE AMX */}
-              H1 Alignment:</span>
+              <span className="text-xs font-medium text-slate-400">H1 Alignment:</span>
               {getBiasBadge()}
             </div>
 
