@@ -197,7 +197,6 @@ export default function App() {
 
       {/* Header */}
       <Header
-        bots={bots as any[]}
         account={account}
         connectionStatus={connectionStatus}
         retryAttempt={retryAttempt}

@@ -26,7 +26,6 @@ interface HeaderProps {
   currentDomain?: string;
   sentiment: MarketSentiment;
   risk: RiskOverview;
-  bots?: any[];
   isDark: boolean;
   onToggleDarkMode: () => void;
   soundEnabled: boolean;
@@ -42,7 +41,6 @@ export const Header: React.FC<HeaderProps> = ({
   currentDomain,
   sentiment,
   risk,
-  bots = [],
   isDark,
   onToggleDarkMode,
   soundEnabled,
@@ -52,9 +50,6 @@ export const Header: React.FC<HeaderProps> = ({
 }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const isPnlPositive = account.dailyPnl >= 0;
-  const spreadBot = (bots || []).find((b: any) => b.bid != null && b.ask != null);
-  const spread = spreadBot ? +((spreadBot.ask - spreadBot.bid).toFixed(2)) : null;
-  const spreadOk = spread !== null && spread <= 0.99;
 
   // Formatare valută USD
   const formatUsd = (num: number) =>
@@ -95,15 +90,7 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
           </div>
 
-                    {/* SPREAD LIVE XAUUSD */}
-          <div className={`flex items-center gap-2 rounded-xl border px-3 py-2 ${spread === null ? 'border-slate-700 bg-slate-900/60' : spreadOk ? 'border-emerald-500/60 bg-emerald-500/10' : 'border-rose-500/60 bg-rose-500/10'}`}>
-            <span className="text-xs font-semibold uppercase tracking-wider text-slate-400">Spread XAUUSD:</span>
-            <span className={`font-mono text-sm font-bold ${spread === null ? 'text-slate-300' : spreadOk ? 'text-emerald-400' : 'text-rose-400'}`}>
-              {spread === null ? 'N/A' : `$${spread.toFixed(2)}`}
-            </span>
-          </div>
-
-{/* 1. Live Equity - Vizibil întotdeauna pe Mobile & Desktop (Sticky Top) */}
+          {/* 1. Live Equity - Vizibil întotdeauna pe Mobile & Desktop (Sticky Top) */}
           <div className="flex items-center gap-2 sm:gap-6">
             <div className="flex items-center gap-2 sm:gap-3 rounded-xl border border-slate-800/90 bg-slate-900/80 px-2.5 py-1.5 sm:px-4 sm:py-2 shadow-inner">
               <div className="flex flex-col">
