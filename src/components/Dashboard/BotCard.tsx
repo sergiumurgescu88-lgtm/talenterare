@@ -291,6 +291,12 @@ const BotCardComponent: React.FC<BotCardProps> = ({
               <div className="flex items-center justify-between text-slate-300">
                 <span className="text-slate-400">Engine:</span>
                 <span className="font-semibold text-slate-200 truncate max-w-[155px]" title={fibData.strategyLabel}>
+              {/* METRICI REALE AMX */}
+              <div className="grid grid-cols-3 gap-2 mt-2 mb-2">
+                <div className="bg-slate-900/50 rounded p-1 text-center border border-slate-800"><div className="text-[9px] text-slate-500">ADX</div><div className="font-mono font-bold text-xs text-slate-200">{bot.adx}</div></div>
+                <div className="bg-slate-900/50 rounded p-1 text-center border border-slate-800"><div className="text-[9px] text-slate-500">Whale</div><div className="font-mono font-bold text-xs text-indigo-400">{bot.whale}x</div></div>
+                <div className="bg-slate-900/50 rounded p-1 text-center border border-slate-800"><div className="text-[9px] text-slate-500">Lot</div><div className="font-mono font-bold text-xs text-slate-200">{bot.lot}</div></div>
+              </div>
                   {fibData.strategyLabel}
                 </span>
               </div>
