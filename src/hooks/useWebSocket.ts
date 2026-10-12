@@ -76,6 +76,7 @@ export function useWebSocket({ onNewToast, onTradeSound, onAlertSound, onKillSou
   });
 
   const [account, setAccount] = useState<AccountData>(INITIAL_ACCOUNT);
+  const [liveSpread, setLiveSpread] = useState<number | null>(null);
   const [equityHistory, setEquityHistory] = useState<EquityHistoryPoint[]>(() => generateEquityHistory(90));
   const [domains, setDomains] = useState<DomainSummary[]>(INITIAL_DOMAIN_SUMMARIES);
   const [sentiment, setSentiment] = useState<MarketSentiment>(INITIAL_MARKET_SENTIMENT);
@@ -334,6 +335,7 @@ export function useWebSocket({ onNewToast, onTradeSound, onAlertSound, onKillSou
             }
 
             if (data.account) setAccount((prev) => ({ ...prev, ...data.account }));
+            if (data.live_spread && data.live_spread.spread_usd != null) setLiveSpread(Number(data.live_spread.spread_usd));
             if (data.equity_history && Array.isArray(data.equity_history)) {
               setEquityHistory(data.equity_history);
             }
@@ -459,6 +461,7 @@ export function useWebSocket({ onNewToast, onTradeSound, onAlertSound, onKillSou
     currentDomain,
     bots,
     account,
+    liveSpread,
     equityHistory,
     domains,
     sentiment,

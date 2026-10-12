@@ -12,6 +12,7 @@ import { ErrorBoundary } from './components/Common/ErrorBoundary';
 import { BotCardSkeleton, KPISkeleton, Skeleton } from './components/Common/Skeleton';
 import { CommandCenter } from './components/Dashboard/CommandCenter';
 import { BotCard } from './components/Dashboard/BotCard';
+import { SpreadBar } from './components/Dashboard/SpreadBar';
 
 // Lazy Loaded Components
 const DomainGroup = lazy(() => import('./components/Dashboard/DomainGroup').then(m => ({ default: m.DomainGroup })));
@@ -90,8 +91,7 @@ export default function App() {
     sendManualTrade,
     triggerEmergencyKill,
     clearLogs,
-    isInitialLoading,
-  } = useWebSocket({
+    isInitialLoading, liveSpread } = useWebSocket({
     onNewToast: addToast,
     onTradeSound: playTradeSound,
     onAlertSound: playAlertSound,
@@ -272,6 +272,7 @@ export default function App() {
         <section id="all-bots" className="scroll-mt-24 space-y-4">
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between border-b border-slate-800/80 pb-3">
             <div>
+              <SpreadBar spread={ liveSpread } />
               <div className="flex items-center gap-2">
                 <span className="flex h-2 w-2 rounded-full bg-cyan-500" />
                 <h2 className="text-sm font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400">
