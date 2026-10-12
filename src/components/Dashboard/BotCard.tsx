@@ -36,8 +36,8 @@ interface FibonacciInfo {
 
 /**
  * Calcul și extragere informații Fibonacci dedicate conform cerințelor:
- * 3. SERGIU-Majors (EURUSD): Classic Retracement: 0.618 | {bot.whale}x
- * 4. SERGIU-Metals (XAUUSD): Deep Golden Zone: 0.618 - 0.65 | {bot.whale}x
+ * 3. SERGIU-Majors (EURUSD): Classic Retracement: 0.618 | AMX Whale > 1.55x
+ * 4. SERGIU-Metals (XAUUSD): Deep Golden Zone: 0.618 - 0.65 | AMX Whale > 1.55x
  * 5. SERGIU-Crypto (GBPJPY / BTCUSD): Equilibrium Level: 0.500 | Stop Loss în afara 0.786
  * 6. SERGIU-Macro (EURJPY / OIL): Fibonacci + Psychological Level | Verifică suprapunere cu numere rotunde
  */
@@ -50,7 +50,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   if (nameLower.includes('sergiu-majors') || (nameLower.includes('sergiu') && asset === 'EURUSD')) {
     return {
       strategyLabel: bot.strategy || 'AMX Strategy Engine',
-      confirmationDetail: '{bot.whale}x',
+      confirmationDetail: 'AMX Whale Active',
       currentLevel: '{bot.lot}',
       nextLevel: '1.618 Extension',
       distance: '+24 pips to 1.618',
@@ -62,7 +62,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   if (nameLower.includes('sergiu-metals') || (nameLower.includes('sergiu') && asset === 'XAUUSD')) {
     return {
       strategyLabel: bot.strategy || 'AMX Strategy Engine',
-      confirmationDetail: '{bot.whale}x',
+      confirmationDetail: 'AMX Whale Active',
       currentLevel: '{bot.lot}',
       nextLevel: '2.618 Macro Ext.',
       distance: '+42 pips to 1.618',
