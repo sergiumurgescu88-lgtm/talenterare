@@ -226,7 +226,7 @@ export const Header: React.FC<HeaderProps> = ({
         {isMobileMenuOpen && (
           <div className="sm:hidden border-t border-slate-800/90 bg-slate-950 p-4 space-y-4 animate-in slide-in-from-top-2 duration-200 shadow-2xl">
             {/* Account Info Details */}
-            <div className="grid grid-cols-2 gap-2 rounded-xl border border-slate-800 bg-slate-900/60 p-3 text-sm font-mono">
+            <div className="flex flex-nowrap gap-3 overflow-x-auto pb-2 rounded-xl border border-slate-800 bg-slate-900/60 p-3 text-sm font-mono scrollbar-thin scrollbar-thumb-slate-700 scrollbar-track-slate-900">
               <div>
                 <span className="text-slate-400 block text-xs">BALANȚĂ CONT</span>
                 <span className="font-bold text-slate-200 text-sm">{formatUsd(account.balance)}</span>

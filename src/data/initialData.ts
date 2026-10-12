@@ -1,14 +1,14 @@
 import { BotData, DomainId, DomainSummary, LogEntry, AccountData, MarketSentiment, RiskOverview, EquityHistoryPoint } from '../types/trading';
 
 export const INITIAL_ACCOUNT: AccountData = {
-  equity: 1284750.40,
-  balance: 1250000.00,
+  equity: 24039.55,
+  balance: 23500.00,
   currency: 'USD',
-  dailyPnl: 14750.40,
-  dailyPnlPct: 1.16,
-  marginUsed: 42180.00,
-  freeMargin: 1242570.40,
-  marginLevel: 3045.8,
+  dailyPnl: 539.55,
+  dailyPnlPct: 2.29,
+  marginUsed: 2100.00,
+  freeMargin: 21939.55,
+  marginLevel: 1144.74,
 };
 
 export const INITIAL_MARKET_SENTIMENT: MarketSentiment = {
