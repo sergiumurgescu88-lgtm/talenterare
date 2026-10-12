@@ -49,7 +49,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   // 3. SERGIU-Majors (EURUSD)
   if (nameLower.includes('sergiu-majors') || (nameLower.includes('sergiu') && asset === 'EURUSD')) {
     return {
-      strategyLabel: 'Classic Retracement: 0.618',
+      strategyLabel: bot.strategy || 'AMX Strategy Engine',
       confirmationDetail: '{bot.whale}x',
       currentLevel: '{bot.lot}',
       nextLevel: '1.618 Extension',
@@ -61,7 +61,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   // 4. SERGIU-Metals (XAUUSD)
   if (nameLower.includes('sergiu-metals') || (nameLower.includes('sergiu') && asset === 'XAUUSD')) {
     return {
-      strategyLabel: 'Deep Golden Zone: 0.618 - 0.65',
+      strategyLabel: bot.strategy || 'AMX Strategy Engine',
       confirmationDetail: '{bot.whale}x',
       currentLevel: '{bot.lot}',
       nextLevel: '2.618 Macro Ext.',
