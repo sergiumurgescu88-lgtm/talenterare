@@ -80,13 +80,7 @@ export const Header: React.FC<HeaderProps> = ({
                 <h1 className="text-base font-extrabold tracking-tight text-slate-100 sm:text-xl leading-heading">
                   AM TEAM <span className="bg-gradient-to-r from-emerald-500 via-cyan-500 to-blue-400 bg-clip-text text-transparent">TRINITY</span>
                 </h1>
-                <span className="hidden rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-300 sm:inline-block">
-                  FLEET v4.2
-                </span>
               </div>
-              <p className="hidden sm:block text-xs font-medium text-slate-400 tracking-normal sm:tracking-wider leading-body">
-                20 Algorithmic Bots Across 4 Master Domains
-              </p>
             </div>
           </div>
 
@@ -124,10 +118,6 @@ export const Header: React.FC<HeaderProps> = ({
 
             {/* Desktop Only: Market Sentiment & Risk Score */}
             <div className="hidden lg:flex items-center gap-2">
-              <div className="flex flex-col rounded-lg border border-slate-800 bg-slate-900/40 px-2.5 py-1.5 text-center">
-                <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400">VIX Volatility</span>
-                <span className="font-mono text-xs font-bold text-cyan-300">{sentiment.vix} • {sentiment.label}</span>
-              </div>
               <div className="flex flex-col rounded-lg border border-slate-800 bg-slate-900/40 px-2.5 py-1.5 text-center">
                 <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400">Risk Level</span>
                 <span
