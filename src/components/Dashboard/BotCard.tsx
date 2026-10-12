@@ -31,6 +31,7 @@ interface FibonacciInfo {
   currentLevel: string;
   nextLevel: string;
   distance: string;
+  swingPoints: [number, number, number, number, number];
 }
 
 /**
@@ -53,6 +54,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
       currentLevel: '0.618 (AMX Zone)',
       nextLevel: '1.618 Extension',
       distance: '+24 pips to 1.618',
+      swingPoints: [22, 88, 44, 94, 61.8],
     };
   }
 
@@ -64,6 +66,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
       currentLevel: '0.618 - 0.65 (Deep Golden)',
       nextLevel: '2.618 Macro Ext.',
       distance: '+42 pips to 1.618',
+      swingPoints: [18, 92, 38, 96, 63.5],
     };
   }
 
@@ -75,6 +78,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
       currentLevel: '0.500 (Equilibrium)',
       nextLevel: '0.618 AMX Zone',
       distance: '-18 pips to 0.786 SL',
+      swingPoints: [28, 82, 50, 86, 50.0],
     };
   }
 
@@ -86,6 +90,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
       currentLevel: '0.618 + Round Level ($75.00)',
       nextLevel: '1.618 Target Level',
       distance: '+1.25$ to Round Nbr',
+      swingPoints: [20, 76, 42, 88, 61.8],
     };
   }
 
@@ -96,6 +101,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
     currentLevel: '0.500 / 0.618 Cluster',
     nextLevel: '1.272 / 1.618 Ext.',
     distance: '+16 pips to target',
+    swingPoints: [25, 78, 48, 85, 58],
   };
 }
 
@@ -177,6 +183,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
 
   // Coordonate pentru mini graficul celor 5 Swing Points (SW1 .. SW5)
   // Lățime 100%, înălțime 36px
+  const svgPoints = fibData.swingPoints;
   const svgCoords = svgPoints.map((val, idx) => {
     const x = 10 + idx * 36; // 10, 46, 82, 118, 154
     const y = 32 - (val / 100) * 26; // inversare axa Y (valori mai mari sus)
@@ -266,18 +273,14 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             <div className="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
               <div className="flex items-center gap-1 text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-yellow-400">
                 <Compass className="h-3 w-3 text-yellow-400" />
-                <span className="text-slate-400">H1 Alignment:</span>
+                <span>{/* DATE REALE AMX */}
+              H1 Alignment:</span>
                 <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
+                <span className="font-bold text-yellow-300">{fibData.currentLevel}</span>
               </div>
               <div className="flex items-center justify-between text-slate-300">
                 <span className="text-slate-400">Engine:</span>
                 <span className="font-semibold text-slate-200 truncate max-w-[155px]" title={fibData.strategyLabel}>
-              {/* METRICI REALE AMX */}
-              <div className="grid grid-cols-3 gap-2 mt-2 mb-2">
-                <div className="bg-slate-900/50 rounded p-1 text-center border border-slate-800"><div className="text-[9px] text-slate-500">ADX</div><div className="font-mono font-bold text-xs text-slate-200">{bot.adx}</div></div>
-                <div className="bg-slate-900/50 rounded p-1 text-center border border-slate-800"><div className="text-[9px] text-slate-500">Whale</div><div className="font-mono font-bold text-xs text-indigo-400">{bot.whale}x</div></div>
-                <div className="bg-slate-900/50 rounded p-1 text-center border border-slate-800"><div className="text-[9px] text-slate-500">Lot</div><div className="font-mono font-bold text-xs text-slate-200">{bot.lot}</div></div>
-              </div>
                   {fibData.strategyLabel}
                 </span>
               </div>
@@ -397,7 +400,8 @@ const BotCardComponent: React.FC<BotCardProps> = ({
           {/* H1 Alignment & Live P/L bar */}
           <div className="mt-3 flex items-center justify-between border-t border-slate-800/60 pt-2.5">
             <div className="flex items-center gap-1.5">
-              <span className="text-xs font-medium text-slate-400">H1 Alignment:</span>
+              <span className="text-xs font-medium text-slate-400">{/* DATE REALE AMX */}
+              H1 Alignment:</span>
               {getBiasBadge()}
             </div>
 
