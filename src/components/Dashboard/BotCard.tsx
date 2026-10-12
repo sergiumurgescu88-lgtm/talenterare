@@ -278,6 +278,21 @@ const BotCardComponent: React.FC<BotCardProps> = ({
               <span className="text-xs font-bold text-emerald-500 flex items-center gap-0.5">
                 <Target className="h-2.5 w-2.5" />
                 {fibData.distance}
+              {/* Strategie și Praguri de Intrare */}
+              <div className="mt-2 pt-2 border-t border-slate-800/60 space-y-1">
+                <div className="flex items-center justify-between text-xs text-slate-400">
+                  <span>Strategie:</span>
+                  <span className="font-mono text-cyan-300 text-right">{bot.strategy || 'Whale &gt; 1.22x · ADX &gt; 19'}</span>
+                </div>
+                <div className="flex items-center justify-between text-xs text-slate-400">
+                  <span>Prag ADX:</span>
+                  <span className="font-mono text-emerald-400">{'&gt; '}{bot.adx_threshold || 19}</span>
+                </div>
+                <div className="flex items-center justify-between text-xs text-slate-400">
+                  <span>Timeframes:</span>
+                  <span className="font-mono text-purple-400">M15 + M30 + H1</span>
+                </div>
+              </div>
               </span>
             </div>
 
@@ -286,17 +301,6 @@ const BotCardComponent: React.FC<BotCardProps> = ({
               <div className="flex items-center justify-between text-slate-300">
                 <span className="text-slate-400">H1 Alignment:</span>
                 <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
-                <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
-              </div>
-              <div className="flex items-center justify-between text-slate-300">
-                <span className="text-slate-400">ADX:</span>
-                <span className="font-semibold text-slate-200 truncate max-w-[155px]" title={bot.adx}>
-                  {bot.adx}
-                </span>
-              </div>
-              <div className="flex items-center justify-between text-xs text-cyan-300/90">
-                <span className="text-slate-500 font-sans">Trigger:</span>
-                <span className="font-mono text-cyan-300">{fibData.confirmationDetail}</span>
               </div>
             </div>
 

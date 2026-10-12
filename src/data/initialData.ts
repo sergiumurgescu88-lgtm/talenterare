@@ -68,6 +68,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.22x · ADX > 19 · Scor > 60',
+    adx_threshold: 19, whale_threshold: 1.22, timeframe: 'M15',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe M15.',
     technicalParameters: {
       adxThreshold: 19,
@@ -109,6 +110,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.22x · ADX > 19 · Scor > 60',
+    adx_threshold: 19, whale_threshold: 1.22, timeframe: 'M15',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe M15.',
     technicalParameters: {
       adxThreshold: 19,
@@ -150,6 +152,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.33x · ADX > 20 · Scor > 65',
+    adx_threshold: 20, whale_threshold: 1.33, timeframe: 'M30',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe M30.',
     technicalParameters: {
       adxThreshold: 20,
@@ -191,6 +194,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.33x · ADX > 20 · Scor > 65',
+    adx_threshold: 20, whale_threshold: 1.33, timeframe: 'M30',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe M30.',
     technicalParameters: {
       adxThreshold: 20,
@@ -232,6 +236,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.44x · ADX > 22 · Scor > 70',
+    adx_threshold: 22, whale_threshold: 1.44, timeframe: 'M15',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe M15.',
     technicalParameters: {
       adxThreshold: 22,
@@ -273,6 +278,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.44x · ADX > 22 · Scor > 70',
+    adx_threshold: 22, whale_threshold: 1.44, timeframe: 'M15',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe M15.',
     technicalParameters: {
       adxThreshold: 22,
@@ -314,6 +320,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.55x · ADX > 23 · Scor > 75',
+    adx_threshold: 23, whale_threshold: 1.55, timeframe: 'H1',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe H1.',
     technicalParameters: {
       adxThreshold: 23,
@@ -355,6 +362,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.55x · ADX > 23 · Scor > 75',
+    adx_threshold: 23, whale_threshold: 1.55, timeframe: 'H1',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe H1.',
     technicalParameters: {
       adxThreshold: 23,
@@ -396,6 +404,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.66x · ADX > 24 · Scor > 80',
+    adx_threshold: 24, whale_threshold: 1.66, timeframe: 'M30',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe M30.',
     technicalParameters: {
       adxThreshold: 24,
@@ -437,6 +446,7 @@ export const INITIAL_BOTS: BotData[] = [
     sharpeRatio: 2.15,
     totalProfit: 12500.0,
     strategyName: 'Whale > 1.66x · ADX > 24 · Scor > 80',
+    adx_threshold: 24, whale_threshold: 1.66, timeframe: 'M30',
     strategyDescription: 'AMX Strategy Engine - XAUUSD Scalping cu filtru Whale si ADX pe timeframe M30.',
     technicalParameters: {
       adxThreshold: 24,
