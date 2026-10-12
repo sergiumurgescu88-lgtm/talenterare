@@ -277,7 +277,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
               </div>
               <span className="text-xs font-bold text-emerald-500 flex items-center gap-0.5">
                 <Target className="h-2.5 w-2.5" />
-                {fibData.distance}
+                {bot.status === 'ÎN TRADE' ? `${bot.pips_to_target || 0} pips to target` : '0 pips to target'}
               </span>
             </div>
 
@@ -285,7 +285,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             <div className="mt-1.5 flex flex-col gap-1 text-xs">
               <div className="flex items-center justify-between">
                 <span className="text-slate-400">Strategie:</span>
-                <span className="font-mono text-cyan-300 text-right">{bot.strategy || 'Whale > 1.22x · ADX > 19 · Scor > 60'}</span>
+                <span className="font-mono text-cyan-300 text-right">{bot.strategyName || 'Whale > 1.22x · ADX > 19 · Scor > 60'}</span>
               </div>
               <div className="flex items-center justify-between">
                 <span className="text-slate-400">Prag ADX:</span>
