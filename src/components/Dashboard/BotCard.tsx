@@ -51,7 +51,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
     return {
       strategyLabel: 'Classic Retracement: 0.618',
       confirmationDetail: 'Confirmare pe M15',
-      currentLevel: '0.618 (Golden Pocket)',
+      currentLevel: '0.618 (AMX Zone)',
       nextLevel: '1.618 Extension',
       distance: '+24 pips to 1.618',
       swingPoints: [22, 88, 44, 94, 61.8],
@@ -76,7 +76,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
       strategyLabel: 'Equilibrium Level: 0.500',
       confirmationDetail: 'Stop Loss în afara 0.786',
       currentLevel: '0.500 (Equilibrium)',
-      nextLevel: '0.618 Golden Pocket',
+      nextLevel: '0.618 AMX Zone',
       distance: '-18 pips to 0.786 SL',
       swingPoints: [28, 82, 50, 86, 50.0],
     };
@@ -273,7 +273,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             <div className="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
               <div className="flex items-center gap-1 text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-yellow-400">
                 <Compass className="h-3 w-3 text-yellow-400" />
-                <span>Fibonacci Analysis</span>
+                <span>AMX Strategy Engine</span>
               </div>
               <span className="text-xs font-bold text-emerald-500 flex items-center gap-0.5">
                 <Target className="h-2.5 w-2.5" />
@@ -284,17 +284,17 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             {/* Specificații exacte conform cerințelor 3, 4, 5, 6 */}
             <div className="mt-1.5 flex flex-col gap-1 text-xs">
               <div className="flex items-center justify-between text-slate-300">
-                <span className="text-slate-400">Nivel Curent:</span>
+                <span className="text-slate-400">AMX Signal:</span>
                 <span className="font-bold text-yellow-300">{fibData.currentLevel}</span>
               </div>
               <div className="flex items-center justify-between text-slate-300">
-                <span className="text-slate-400">Strategie:</span>
+                <span className="text-slate-400">Engine:</span>
                 <span className="font-semibold text-slate-200 truncate max-w-[155px]" title={fibData.strategyLabel}>
                   {fibData.strategyLabel}
                 </span>
               </div>
               <div className="flex items-center justify-between text-xs text-cyan-300/90">
-                <span className="text-slate-500 font-sans">Condiție:</span>
+                <span className="text-slate-500 font-sans">Trigger:</span>
                 <span className="font-mono text-cyan-300">{fibData.confirmationDetail}</span>
               </div>
             </div>
@@ -302,8 +302,8 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             {/* Mini Grafic cu ultimele 5 Swing Points (SW1 - SW5) */}
             <div className="mt-2 pt-1 border-t border-slate-800/60">
               <div className="flex items-center justify-between text-xs text-slate-500 font-sans mb-1">
-                <span>Swing Flow (SW1 → SW5)</span>
-                <span className="text-yellow-400/90 font-mono">0.618 Golden Pocket</span>
+                <span>AMX Momentum</span>
+                <span className="text-yellow-400/90 font-mono">0.618 AMX Zone</span>
               </div>
 
               <div className="relative h-9 w-full bg-slate-950/80 rounded border border-slate-800/60 overflow-hidden px-1">
@@ -382,7 +382,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             {/* Whale Intensity */}
             <div className="flex flex-col">
               <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center justify-center gap-1">
-                <Waves className="h-2.5 w-2.5 text-purple-400" /> WHALE
+                <Waves className="h-2.5 w-2.5 text-purple-400" /> AMX WHALE
               </span>
               <span
                 className={`font-mono text-xs font-bold ${
@@ -406,10 +406,10 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             </div>
           </div>
 
-          {/* H4 Bias & Live P/L bar */}
+          {/* H1 Alignment & Live P/L bar */}
           <div className="mt-3 flex items-center justify-between border-t border-slate-800/60 pt-2.5">
             <div className="flex items-center gap-1.5">
-              <span className="text-xs font-medium text-slate-400">H4 Bias:</span>
+              <span className="text-xs font-medium text-slate-400">H1 Alignment:</span>
               {getBiasBadge()}
             </div>
 

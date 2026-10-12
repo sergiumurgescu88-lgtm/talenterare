@@ -266,33 +266,7 @@ export default function App() {
         </div>
 
         {/* SECTION A: COMMAND CENTER (Top 4 Domain Cards) */}
-        <section id="command-center" className="scroll-mt-24 space-y-6">
-          <ErrorBoundary>
-            {isInitialLoading ? (
-              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
-                {[...Array(4)].map((_, i) => <KPISkeleton key={i} />)}
-              </div>
-            ) : (
-              <CommandCenter
-                domains={domains}
-                selectedDomainFilter={domainFilter}
-                onSelectDomainFilter={handleSelectDomainFilter}
-              />
-            )}
-          </ErrorBoundary>
-          
-          {/* SRE-STRATEGIST FLEET ADVISOR */}
-          <ErrorBoundary>
-            <Suspense fallback={<Skeleton className="h-48 w-full" />}>
-              <FleetAdvisor 
-                bots={bots} 
-                account={account} 
-                sentiment={sentiment} 
-                domains={domains} 
-              />
-            </Suspense>
-          </ErrorBoundary>
-        </section>
+        
 
         {/* SECTION B: ALL 20 BOTS (Grid principal) */}
         <section id="all-bots" className="scroll-mt-24 space-y-4">
@@ -305,7 +279,7 @@ export default function App() {
                 </h2>
               </div>
               <h3 className="text-xl font-extrabold text-slate-100 tracking-tight sm:text-2xl leading-tight">
-                All 20 Autonomous Bots ({visibleBots.length} afișați)
+                All 10 Active Bots ({visibleBots.length} afișați)
               </h3>
             </div>
 
@@ -391,7 +365,7 @@ export default function App() {
               </Suspense>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-                {visibleBots.map((bot) => (
+                {visibleBots.slice(0, 10).map((bot) => (
                   <BotCard
                     key={bot.id}
                     bot={bot}
@@ -406,7 +380,17 @@ export default function App() {
         </section>
 
         {/* SECTION C: PERFORMANCE OVERVIEW (Area Chart & 20-Bot Ledger) */}
-        <section id="performance" className="scroll-mt-24 space-y-6">
+        
+
+        {/* SECTION D: DEEP RESEARCH INSIGHTS */}
+        
+
+        {/* SECTION E: LIVE EXECUTION LOGS (Terminal Viewer cu 2. autoScroll control) */}
+        
+      </main>
+
+      
+<section id="performance" className="scroll-mt-24 space-y-6">
           <ErrorBoundary fallback={
             <div className="flex h-72 items-center justify-center rounded-2xl border border-slate-800 bg-slate-900/50 text-slate-500 font-mono text-sm">
               <div className="flex flex-col items-center gap-2">
@@ -429,15 +413,13 @@ export default function App() {
           </ErrorBoundary>
         </section>
 
-        {/* SECTION D: DEEP RESEARCH INSIGHTS */}
-        <section id="research" className="scroll-mt-24">
+<section id="research" className="scroll-mt-24">
           <Suspense fallback={<Skeleton className="h-64 w-full" />}>
             <DeepResearchInsights domains={domains} />
           </Suspense>
         </section>
 
-        {/* SECTION E: LIVE EXECUTION LOGS (Terminal Viewer cu 2. autoScroll control) */}
-        <section id="logs" className="scroll-mt-24">
+<section id="logs" className="scroll-mt-24">
           <Suspense fallback={<Skeleton className="h-80 w-full" />}>
             <ExecutionLogs
               logs={logs}
@@ -447,8 +429,48 @@ export default function App() {
             />
           </Suspense>
         </section>
-      </main>
 
+      
+
+      {/* MOVED: Domain Overview & SRE Strategist */}
+<section id="command-center" className="scroll-mt-24 space-y-6">
+          <ErrorBoundary>
+            {isInitialLoading ? (
+              <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+                {[...Array(4)].map((_, i) => <KPISkeleton key={i} />)}
+              </div>
+            ) : (
+              <CommandCenter
+                domains={domains}
+                selectedDomainFilter={domainFilter}
+                onSelectDomainFilter={handleSelectDomainFilter}
+              />
+            )}
+          </ErrorBoundary>
+          
+          {/* SRE-STRATEGIST FLEET ADVISOR */}
+          <ErrorBoundary>
+            <Suspense fallback={<Skeleton className="h-48 w-full" />}>
+              <FleetAdvisor 
+                bots={bots} 
+                account={account} 
+                sentiment={sentiment} 
+                domains={domains} 
+              />
+            </Suspense>
+          </ErrorBoundary>
+        </section>
+{/* SRE-STRATEGIST FLEET ADVISOR */}
+          <ErrorBoundary>
+            <Suspense fallback={<Skeleton className="h-48 w-full" />}>
+              <FleetAdvisor 
+                bots={bots} 
+                account={account} 
+                sentiment={sentiment} 
+                domains={domains} 
+              />
+            </Suspense>
+          </ErrorBoundary>
       {/* Footer */}
       <Footer domains={domains} />
 
