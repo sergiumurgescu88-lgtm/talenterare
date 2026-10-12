@@ -36,8 +36,6 @@ interface FibonacciInfo {
 
 /**
  * Calcul și extragere informații Fibonacci dedicate conform cerințelor:
- * 3. SERGIU-Majors (EURUSD): Classic Retracement: 0.618 | Confirmare pe M15
- * 4. SERGIU-Metals (XAUUSD): Deep Golden Zone: 0.618 - 0.65 | Confirmare pe M30
  * 5. SERGIU-Crypto (GBPJPY / BTCUSD): Equilibrium Level: 0.500 | Stop Loss în afara 0.786
  * 6. SERGIU-Macro (EURJPY / OIL): Fibonacci + Psychological Level | Verifică suprapunere cu numere rotunde
  */
@@ -49,9 +47,6 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   // 3. SERGIU-Majors (EURUSD)
   if (nameLower.includes('sergiu-majors') || (nameLower.includes('sergiu') && asset === 'EURUSD')) {
     return {
-      strategyLabel: 'Classic Retracement: 0.618',
-      confirmationDetail: 'Confirmare pe M15',
-      currentLevel: '0.618 (AMX Zone)',
       nextLevel: '1.618 Extension',
       distance: '+24 pips to 1.618',
       swingPoints: [22, 88, 44, 94, 61.8],
@@ -61,9 +56,6 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   // 4. SERGIU-Metals (XAUUSD)
   if (nameLower.includes('sergiu-metals') || (nameLower.includes('sergiu') && asset === 'XAUUSD')) {
     return {
-      strategyLabel: 'Deep Golden Zone: 0.618 - 0.65',
-      confirmationDetail: 'Confirmare pe M30',
-      currentLevel: '0.618 - 0.65 (Deep Golden)',
       nextLevel: '2.618 Macro Ext.',
       distance: '+42 pips to 1.618',
       swingPoints: [18, 92, 38, 96, 63.5],
@@ -76,7 +68,6 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
       strategyLabel: 'Equilibrium Level: 0.500',
       confirmationDetail: 'Stop Loss în afara 0.786',
       currentLevel: '0.500 (Equilibrium)',
-      nextLevel: '0.618 AMX Zone',
       distance: '-18 pips to 0.786 SL',
       swingPoints: [28, 82, 50, 86, 50.0],
     };
@@ -97,8 +88,6 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
   // Fallback pentru alți boți / Gamma bots
   return {
     strategyLabel: 'AMX Engine v4.2',
-    confirmationDetail: `Confirmare pe ${bot.technicalParameters.timeframe}`,
-    currentLevel: '0.500 / 0.618 Cluster',
     nextLevel: '1.272 / 1.618 Ext.',
     distance: '+16 pips to target',
     swingPoints: [25, 78, 48, 85, 58],
@@ -181,7 +170,6 @@ const BotCardComponent: React.FC<BotCardProps> = ({
     );
   };
 
-  // Coordonate pentru mini graficul celor 5 Swing Points (SW1 .. SW5)
   // Lățime 100%, înălțime 36px
   const svgPoints = fibData.swingPoints;
   const svgCoords = svgPoints.map((val, idx) => {
@@ -279,22 +267,17 @@ const BotCardComponent: React.FC<BotCardProps> = ({
                 <span className="font-bold text-yellow-300">{fibData.currentLevel}</span>
               </div>
               <div className="flex items-center justify-between text-slate-300">
-                <span className="text-slate-400">Engine:</span>
                 <span className="font-semibold text-slate-200 truncate max-w-[155px]" title={fibData.strategyLabel}>
                   {fibData.strategyLabel}
                 </span>
               </div>
               <div className="flex items-center justify-between text-xs text-cyan-300/90">
-                <span className="text-slate-500 font-sans">Trigger:</span>
                 <span className="font-mono text-cyan-300">{fibData.confirmationDetail}</span>
               </div>
             </div>
 
-            {/* Mini Grafic cu ultimele 5 Swing Points (SW1 - SW5) */}
             <div className="mt-2 pt-1 border-t border-slate-800/60">
               <div className="flex items-center justify-between text-xs text-slate-500 font-sans mb-1">
-                <span>AMX Momentum</span>
-                <span className="text-yellow-400/90 font-mono">0.618 AMX Zone</span>
               </div>
 
               <div className="relative h-9 w-full bg-slate-950/80 rounded border border-slate-800/60 overflow-hidden px-1">
@@ -344,11 +327,6 @@ const BotCardComponent: React.FC<BotCardProps> = ({
 
                 {/* Marcaje Swing Points */}
                 <div className="absolute bottom-0.5 inset-x-2 flex justify-between text-xs font-mono text-slate-500">
-                  <span>SW1</span>
-                  <span>SW2</span>
-                  <span>SW3</span>
-                  <span>SW4</span>
-                  <span className="text-yellow-400 font-bold">SW5</span>
                 </div>
               </div>
             </div>
