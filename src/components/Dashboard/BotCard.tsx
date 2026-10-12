@@ -96,7 +96,7 @@ function getFibonacciData(bot: BotData): FibonacciInfo {
 
   // Fallback pentru alți boți / Gamma bots
   return {
-    strategyLabel: 'Harmonic Retracement 0.50 - 0.618',
+    strategyLabel: 'AMX Engine v4.2',
     confirmationDetail: `Confirmare pe ${bot.technicalParameters.timeframe}`,
     currentLevel: '0.500 / 0.618 Cluster',
     nextLevel: '1.272 / 1.618 Ext.',
@@ -284,7 +284,8 @@ const BotCardComponent: React.FC<BotCardProps> = ({
             {/* Specificații exacte conform cerințelor 3, 4, 5, 6 */}
             <div className="mt-1.5 flex flex-col gap-1 text-xs">
               <div className="flex items-center justify-between text-slate-300">
-                <span className="text-slate-400">AMX Signal:</span>
+                <span className="text-slate-400">H1 Alignment:</span>
+                <span className={`font-bold ${bot.h1_alignment?.includes('BUY') ? 'text-emerald-400' : bot.h1_alignment?.includes('SELL') ? 'text-rose-400' : 'text-slate-300'}`}>{bot.h1_alignment || 'SCANNING'}</span>
                 <span className="font-bold text-yellow-300">{fibData.currentLevel}</span>
               </div>
               <div className="flex items-center justify-between text-slate-300">
