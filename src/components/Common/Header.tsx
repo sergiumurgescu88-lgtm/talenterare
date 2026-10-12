@@ -133,26 +133,6 @@ export const Header: React.FC<HeaderProps> = ({
 
           {/* Desktop Right actions: Status, Sound, Quick Trade, Kill Switch, Theme */}
           <div className="hidden sm:flex items-center gap-2.5">
-            {/* WebSocket Status Indicator */}
-            <div
-              className={`flex items-center gap-1.5 rounded-full border px-2.5 py-1 text-xs font-semibold backdrop-blur-sm ${
-                connectionStatus === 'CONNECTED'
-                  ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300'
-                  : connectionStatus === 'SIMULATED'
-                  ? 'border-cyan-500/40 bg-cyan-500/10 text-cyan-300'
-                  : 'border-amber-500/40 bg-amber-500/10 text-amber-300'
-              }`}
-            >
-              <Radio className="h-3.5 w-3.5 animate-pulse" />
-              <span className="font-mono">
-                {connectionStatus === 'CONNECTED'
-                  ? `WS LIVE (${currentDomain || 'amteam.live'})`
-                  : connectionStatus === 'SIMULATED'
-                  ? `SIMULATOR (2s)`
-                  : `RETRY #${retryAttempt}`}
-              </span>
-            </div>
-
             {/* Quick Trade Button */}
             <button
               onClick={() => {
